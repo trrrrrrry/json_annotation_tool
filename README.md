@@ -74,7 +74,7 @@ json_annotation_tool/
 ## 安装与运行
   1. 克隆项目
   ```bash
-     git clone https://github.com/trrrrrrry/json_annotation_tool
+     git clone https://github.com/trrrrrrry/json_annotation_tool.git
      cd json_annotation_tool
   ```
   2. 安装依赖

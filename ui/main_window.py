@@ -34,6 +34,12 @@ class MainWindow(QMainWindow):
         for act in (open_folder, open_json, add_ann, edit_ann, del_ann):
             toolbar.addAction(act)
 
+        # 设置部分按钮背景色为浅蓝
+        for action in (open_folder, add_ann, del_ann):
+            btn = toolbar.widgetForAction(action)
+            if btn:
+                btn.setStyleSheet("background-color: #C8E4F2;")
+
         # —— 预览区 ——
         self.preview = PreviewWidget()
         self.setCentralWidget(self.preview)

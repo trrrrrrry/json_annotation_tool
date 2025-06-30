@@ -24,8 +24,8 @@ class PreviewWidget(QWidget):
         top_layout.addWidget(self.image_list, 1)
 
         # 底部：前一张/下一张按钮
-        btn_prev = QPushButton('< Previous')
-        btn_next = QPushButton('Next >')
+        btn_prev = QPushButton('< Previous (←)')
+        btn_next = QPushButton('Next > (→)')
         btn_prev.clicked.connect(self.show_previous)
         btn_next.clicked.connect(self.show_next)
         btn_layout = QHBoxLayout()

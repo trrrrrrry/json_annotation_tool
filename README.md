@@ -16,7 +16,9 @@ json_annotation_tool/
 ├── utils/
 │   └── json_utils.py         # JSON 读写辅助函数
 ├── test_folder/              # 测试用示例 JSON/图片
-└── main.py                   # 程序入口
+├── main.py                   # 程序入口
+├── requirements.txt          # 依赖列表
+└── README.md                 # 项目说明
 ```
 ---
 ## JSON 格式示例

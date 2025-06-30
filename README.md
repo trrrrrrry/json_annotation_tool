@@ -25,12 +25,12 @@ json_annotation_tool/
 每个 JSON 文件至少包含一个 ```shapes``` 列表，每项示例如下：
 ```json
 {
-  "imagePath": "example.png",
+  "imagePath": "I_am_a_picture.png",
   "shapes": [
     {
-      "region_name": "金库",
+      "region_name": "我是大框！",
       "is_region_flag": "true",
-      "label": "标记1",
+      "label": "我是一个label！",
       "points": [[100, 200], [400, 500]],
       "other_key": "…"    // 其它自定义字段
     }

@@ -9,6 +9,7 @@ from json_annotation_tool.ui.preview_widget import PreviewWidget
 from json_annotation_tool.ui.add_annotation_dialog import AddAnnotationDialog
 from json_annotation_tool.ui.delete_annotation_dialog import DeleteAnnotationDialog
 from json_annotation_tool.ui.edit_annotation_dialog import EditAnnotationDialog
+from json_annotation_tool.ui.init_annotation_dialog import InitAnnotationDialog
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -30,8 +31,10 @@ class MainWindow(QMainWindow):
         edit_ann.triggered.connect(self.open_edit_dialog)
         del_ann = QAction('Delete Annotation', self)
         del_ann.triggered.connect(self.open_delete_dialog)
+        init_ann = QAction('Init Annotations', self)
+        init_ann.triggered.connect(self.open_init_dialog)
 
-        for act in (open_folder, open_json, add_ann, edit_ann, del_ann):
+        for act in (open_folder, open_json, init_ann, add_ann, edit_ann, del_ann):
             toolbar.addAction(act)
 
         # 设置部分按钮背景色为浅蓝
@@ -95,6 +98,10 @@ class MainWindow(QMainWindow):
             # 编辑完后刷新当前预览
             self._refresh_preview()
 
+    def open_init_dialog(self):
+        dlg = InitAnnotationDialog(self)
+        if dlg.exec_():
+            self.status.showMessage('初始化 JSON 文件完成')
 
     def _refresh_preview(self):
         idx = self.preview.image_list.currentRow()

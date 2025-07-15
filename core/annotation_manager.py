@@ -1,5 +1,6 @@
 # json_annotation_tool/core/annotation_manager.py
-
+from PIL import Image
+import json
 import os
 from typing import Dict, Tuple, Optional, Any
 from json_annotation_tool.core.models import AnnotationFile, Shape
@@ -155,3 +156,49 @@ def delete_shapes_in_file(
 
     ann.shapes = [shp for shp in ann.shapes if not matches(shp)]
     save_annotation(ann)
+
+def create_initial_annotations(
+    folder: str,
+    is_region_flag: str,
+    region_name: str,
+    label: str,
+    coords: Tuple[float, float, float, float],
+    version: str = '5.2.1',
+    shape_type: str = 'rectangle'
+) -> None:
+    """
+    为 folder 下的每张图片创建一个 JSON:
+    - imagePath: 文件名
+    - imageHeight/Width: 读取自图片
+    - shapes: 只有一个元素，带 flag/name/label/points + 默认模板字段
+    """
+    IMAGE_EXTS = ['.jpg', '.jpeg', '.png', '.bmp']
+    for fname in sorted(os.listdir(folder)):
+        base, ext = os.path.splitext(fname)
+        if ext.lower() not in IMAGE_EXTS:
+            continue
+        img_fp = os.path.join(folder, fname)
+        with Image.open(img_fp) as img:
+            w, h = img.size
+
+        json_fp = os.path.join(folder, base + '.json')
+        shape = {
+            'is_region_flag': is_region_flag,
+            'region_name':    region_name,
+            'label':          label,
+            'points':         [[coords[0], coords[1]], [coords[2], coords[3]]],
+            'group_id':       None,
+            'description':    '',
+            'shape_type':     shape_type,
+            'flags':          {}
+        }
+        data = {
+            'version':     version,
+            'flags':       {},
+            'shapes':      [shape],
+            'imagePath':   fname,
+            'imageHeight': h,
+            'imageWidth':  w
+        }
+        with open(json_fp, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)

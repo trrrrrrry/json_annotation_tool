@@ -1,0 +1,32 @@
+{
+  "version": "5.8.2",
+  "flags": {},
+  "shapes": [
+    {
+      "region_name": "死亡",
+      "is_region_flag": "false",
+      "label": "100",
+      "points": [
+        [
+          434.2710120068611,
+          1012.5214408233276
+        ],
+        [
+          471.14922813036026,
+          1028.6449399656947
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "rectangle",
+      "flags": {},
+      "mask": null
+    }
+  ],
+  "imagePath": "Fortnite_cn_Death-multiple_1920x1080_2509_2.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "imageID": null,
+  "metadata": {}
+}

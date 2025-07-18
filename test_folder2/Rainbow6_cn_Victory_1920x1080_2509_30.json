@@ -1,0 +1,32 @@
+{
+    "version": "5.2.1",
+    "flags": {},
+    "shapes": [
+        {
+            "is_region_flag": "false",
+            "region_name": "hi",
+            "label": "label",
+            "points": [
+                [
+                    10.0,
+                    20.0
+                ],
+                [
+                    300.0,
+                    400.0
+                ]
+            ],
+            "group_id": null,
+            "description": "",
+            "shape_type": "rectangle",
+            "flags": {},
+            "mask": null
+        }
+    ],
+    "imagePath": "Rainbow6_cn_Victory_1920x1080_2509_30.jpg",
+    "imageData": null,
+    "imageHeight": 1080,
+    "imageWidth": 1920,
+    "metadata": {},
+    "imageID": null
+}

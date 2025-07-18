@@ -1,8 +1,8 @@
 # core/file_manager.py
 import os
 from typing import List, Optional
-from json_annotation_tool.core.models import AnnotationFile
-from json_annotation_tool.utils.json_utils import read_json
+from core.models import AnnotationFile
+from utils.json_utils import read_json
 
 # 支持的图片扩展名
 IMAGE_EXTS = ['.jpg', '.png']

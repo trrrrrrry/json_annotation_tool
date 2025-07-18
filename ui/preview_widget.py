@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget, QListWidget, QLabel, QHBoxLayout, QVBoxLayo
 from PyQt5.QtGui import QPixmap, QPainter, QPen, QFont
 from PyQt5.QtCore import Qt
 import os
-from json_annotation_tool.core.models import AnnotationFile
+from core.models import AnnotationFile
 
 class PreviewWidget(QWidget):
     def __init__(self, parent=None):

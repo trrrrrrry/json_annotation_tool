@@ -1,25 +1,36 @@
 # json_annotation_tool
 一个基于 Python + PyQt5 的桌面应用，用于浏览并编辑与图像配套的 JSON 格式边界框标注。支持批量操作，一键增删改，极大提升 Labelme 标注后的后处理效率。
 ## 项目结构
-```bash
-json_annotation_tool/
-├── core/
-│   ├── models.py              # 数据类：Shape、AnnotationFile
-│   ├── file_manager.py        # 扫描文件夹或单 JSON → 配对 JSON 与图片路径
-│   └── annotation_manager.py  # load/save/add/edit/delete 核心逻辑
-├── ui/
-│   ├── main_window.py               # 主窗口（工具栏、状态栏、预览区域）
-│   ├── preview_widget.py            # 图片预览 + 标注叠加 + 导航
-│   ├── add_annotation_dialog.py     # 添加标注对话框
-│   ├── edit_annotation_dialog.py    # 编辑标注对话框
-│   └── delete_annotation_dialog.py  # 删除标注对话框
-├── utils/
-│   └── json_utils.py         # JSON 读写辅助函数
-├── test_folder/              # 测试用示例 JSON/图片
-├── main.py                   # 程序入口
-├── requirements.txt          # 依赖列表
-└── README.md                 # 项目说明
+## 📂 Project Structure
+
+```plaintext
+json_annotation_tool/             # Project root directory
+├── build/                        # PyInstaller build artifacts (ignore)
+│   └── main/                     # Bundled library and metadata
+├── dist/                         # Distributable output (e.g., executable)
+│   └── main.exe
+├── core/                         # Core processing modules
+│   ├── models.py                 # Data models: Shape, AnnotationFile
+│   ├── file_manager.py           # Scan folders & pair images with JSON
+│   └── annotation_manager.py     # Load/save/add/edit/delete annotations
+├── test_folder/                  # Example data set 1
+├── test_folder2/                 # Example data set 2
+├── ui/                           # User interface components
+│   ├── add_annotation_dialog.py  # Dialog for adding new shapes
+│   ├── delete_annotation_dialog.py # Dialog for deleting shapes
+│   ├── edit_annotation_dialog.py # Dialog for editing shapes
+│   ├── init_annotation_dialog.py # Dialog for bulk JSON initialization
+│   ├── main_window.py            # Main application window and toolbar
+│   └── preview_widget.py         # Image preview and overlay widget
+├── utils/                        # Utility scripts
+│   ├── Fortnite_cn_Death-multiple_1920x1080_2509_2.json # Sample JSON
+│   └── main.py                   # Legacy or helper script
+├── main.spec                     # PyInstaller specification file
+├── README.md                     # Project documentation (this file)
+├── requirements                  # (optional) alternative dependencies file
+└── requirements.txt              # Python dependencies list
 ```
+
 ---
 ## JSON 格式示例
 每个 JSON 文件至少包含一个 ```shapes``` 列表，每项示例如下：
@@ -53,6 +64,12 @@ json_annotation_tool/
   - 框上方以文字显示：is_region_flag | label | region_name
 
   - “上一张/下一张”按钮 + 键盘 ← → 切换
+  - 
+- 初始化 JSON：
+
+  - 批量为指定文件夹下每张图片生成初始 JSON
+  - 支持自定义初始 `flag`、`region_name`、`label`、`points`
+  - 自动检测 `imageWidth`、`imageHeight`
 
 - 添加标注
 

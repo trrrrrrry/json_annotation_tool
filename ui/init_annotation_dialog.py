@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (
     QDialog, QFormLayout, QLineEdit, QComboBox,
     QPushButton, QFileDialog, QMessageBox
 )
-from json_annotation_tool.core.annotation_manager import create_initial_annotations
+from core.annotation_manager import create_initial_annotations
 
 class InitAnnotationDialog(QDialog):
     def __init__(self, parent=None):

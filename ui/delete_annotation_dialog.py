@@ -1,6 +1,6 @@
 # json_annotation_tool/ui/delete_annotation_dialog.py
 from PyQt5.QtWidgets import QDialog, QFormLayout, QComboBox, QLineEdit, QPushButton
-from json_annotation_tool.core.annotation_manager import delete_shapes_in_file
+from core.annotation_manager import delete_shapes_in_file
 
 class DeleteAnnotationDialog(QDialog):
     def __init__(self, parent=None):

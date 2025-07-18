@@ -3,8 +3,8 @@ from PIL import Image
 import json
 import os
 from typing import Dict, Tuple, Optional, Any
-from json_annotation_tool.core.models import AnnotationFile, Shape
-from json_annotation_tool.utils.json_utils import read_json, write_json
+from core.models import AnnotationFile, Shape
+from utils.json_utils import read_json, write_json
 
 
 def load_annotation(
@@ -190,15 +190,20 @@ def create_initial_annotations(
             'group_id':       None,
             'description':    '',
             'shape_type':     shape_type,
-            'flags':          {}
+            'flags':          {},
+            "mask":           None
+
         }
         data = {
             'version':     version,
             'flags':       {},
             'shapes':      [shape],
             'imagePath':   fname,
+            "imageData": None,
             'imageHeight': h,
-            'imageWidth':  w
+            'imageWidth':  w,
+            "metadata": {},
+            "imageID": None
         }
         with open(json_fp, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)

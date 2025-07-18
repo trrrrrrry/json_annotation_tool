@@ -2,7 +2,7 @@
 from PyQt5.QtWidgets import (
     QDialog, QFormLayout, QComboBox, QLineEdit, QSpinBox, QPushButton, QMessageBox
 )
-from json_annotation_tool.core.annotation_manager import add_shape_to_file
+from core.annotation_manager import add_shape_to_file
 
 class AddAnnotationDialog(QDialog):
     def __init__(self, parent=None):

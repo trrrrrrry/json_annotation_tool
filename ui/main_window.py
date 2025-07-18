@@ -3,13 +3,13 @@ from PyQt5.QtWidgets import (
     QMainWindow, QFileDialog, QAction, QToolBar, QStatusBar
 )
 import os
-from json_annotation_tool.core.file_manager import find_annotation_pairs
-from json_annotation_tool.core.annotation_manager import load_annotation
-from json_annotation_tool.ui.preview_widget import PreviewWidget
-from json_annotation_tool.ui.add_annotation_dialog import AddAnnotationDialog
-from json_annotation_tool.ui.delete_annotation_dialog import DeleteAnnotationDialog
-from json_annotation_tool.ui.edit_annotation_dialog import EditAnnotationDialog
-from json_annotation_tool.ui.init_annotation_dialog import InitAnnotationDialog
+from core.file_manager import find_annotation_pairs
+from core.annotation_manager import load_annotation
+from ui.preview_widget import PreviewWidget
+from ui.add_annotation_dialog import AddAnnotationDialog
+from ui.delete_annotation_dialog import DeleteAnnotationDialog
+from ui.edit_annotation_dialog import EditAnnotationDialog
+from ui.init_annotation_dialog import InitAnnotationDialog
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -25,10 +25,10 @@ class MainWindow(QMainWindow):
         open_folder.triggered.connect(self.open_folder)
         open_json = QAction('Open JSON', self)
         open_json.triggered.connect(self.open_json)
-        add_ann = QAction('Add Annotation', self)
-        add_ann.triggered.connect(self.open_add_dialog)
         edit_ann = QAction('Edit Annotation', self)
         edit_ann.triggered.connect(self.open_edit_dialog)
+        add_ann = QAction('Add Annotation', self)
+        add_ann.triggered.connect(self.open_add_dialog)
         del_ann = QAction('Delete Annotation', self)
         del_ann.triggered.connect(self.open_delete_dialog)
         init_ann = QAction('Init Annotations', self)
@@ -38,7 +38,7 @@ class MainWindow(QMainWindow):
             toolbar.addAction(act)
 
         # 设置部分按钮背景色为浅蓝
-        for action in (open_folder, add_ann, del_ann):
+        for action in (open_folder, init_ann, edit_ann):
             btn = toolbar.widgetForAction(action)
             if btn:
                 btn.setStyleSheet("background-color: #C8E4F2;")

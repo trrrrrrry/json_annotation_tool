@@ -1,4 +1,4 @@
-# json_annotation_tool/main.py
+# json_annotation_tool/json_annotation.py
 import sys
 from PyQt5.QtWidgets import QApplication
 from ui.main_window import MainWindow

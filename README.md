@@ -32,8 +32,7 @@ json_annotation_tool/             # Project root directory
 ```
 
 ---
-## JSON 格式示例
-每个 JSON 文件至少包含一个 ```shapes``` 列表，每项示例如下：
+## JSON format example
 ```json
 {
   "imagePath": "I_am_a_picture.png",
@@ -43,79 +42,92 @@ json_annotation_tool/             # Project root directory
       "is_region_flag": "true",
       "label": "我是一个label！",
       "points": [[100, 200], [400, 500]],
-      "other_key": "…"    // 其它自定义字段
+      "other_key": "…"    // other keys
     }
-    // … 更多框
+    // … more shapes
   ]
 }
 ```
-工具会在加载/保存时保留除上述字段外的所有额外键值。
+The tool will load/save any other keys and values besides the ones specified above.
 
 ---
-## 功能一览
-- 批量加载
-  - 加载指定文件夹下所有 JSON–图片 配对
-  - 或者单独打开一个 JSON，并手动选择对应图片
+## Features
 
-- 可视化预览
+- **One‑click batch load** (`open folder`)  
+  Select a folder and the tool will automatically find and open all matching images and their `JSON` annotation files.
 
-  - 原图等比展示，不放大失真
-  - 叠加边界框，框内显示 1-based 编号
-  - 框上方以文字显示：is_region_flag | label | region_name
+- **Visual preview**  
+  Display each image with overlaid bounding boxes. Each box shows:
+  - Index (1‑based)
+  - `label`
+  - `region_name`
+  - `is_region_flag`
 
-  - “上一张/下一张”按钮 + 键盘 ← → 切换
-  - 
-- 初始化 JSON：
+- **Add new box** (`Add Annotation`)  
+  Click `Add Annotation`, enter four coordinates (`points`), select `is_region_flag`, `region_name` and `label`. The new box is added to all open `JSON` files.
 
-  - 批量为指定文件夹下每张图片生成初始 JSON
-  - 支持自定义初始 `flag`、`region_name`、`label`、`points`
-  - 自动检测 `imageWidth`、`imageHeight`
+- **Edit existing box** (`Edit Annotation`)  
+  Click `Edit Annotation`, enter the box index, then optionally update any of:
+  - `points`
+  - `is_region_flag`
+  - `region_name`
+  - `label`
 
-- 添加标注
+- **Delete boxes** (`Delete Annotation`)  
+  Click `Delete Annotation`, specify any combination of:
+  - `points`
+  - `label`
+  - `region_name`
+  - `is_region_flag`  
+  All matching boxes will be removed.
 
-  - 选取已有框作为元数据模板
-  - 分别输入四个坐标（x1,y1,x2,y2）
-  - 可选覆盖 region_name 与 label
+- **Bulk initialization** (`Init Annotations`)  
+  For a new project, click `Init Annotations`, choose an empty image folder, enter default:
+  - `points`
+  - `is_region_flag`
+  - `region_name`
+  - `label`  
+  The tool creates a new `JSON` for each image, auto‑detecting its width and height.
 
-- 编辑标注
-  - 按编号（1-based）选择要修改的框
-  - 可选修改：is_region_flag、region_name、label、points
+- **Quick navigation**  
+  Use the `Previous` / `Next` buttons or the keyboard arrows (`←` / `→`) to cycle through images quickly.
 
-- 删除标注
-  - 按 is_region_flag、坐标、label、region_name 多条件删除
-
-- 批量操作
-
-  - 增删改一次操作，即可应用于当前加载的所有 JSON 文件
- 
 ---
 
-## 安装与运行
-  1. 克隆项目
+## Installation & Usage
+
+### 1. Using the Python package
+  1. clone the project
   ```bash
      git clone https://github.com/trrrrrrry/json_annotation_tool.git
      cd json_annotation_tool
   ```
-  2. 安装依赖
+  2. Install dependencies
   ```bash
     pip install -r requirements.txt  # PyQt5, Pillow
   ```
-  3. 启动应用
+  3. Run the application
   ```bash
-    python -m json_annotation_tool.main
+    python -m json_annotation_tool. json_annotation
   ```
 
+### 2. Using the bundled executable
+  1. After building or downloading, open the `dist/` folder
+
+  2. Double‑click `main.exe` (Windows) to launch the tool directly
+
+  3. No Python or additional dependencies required
 ---
 
-## 未来扩展
-- 可拖拽调整：在预览区直接拖拽框体，实时保存
+## Future Enhancements
+- Draggable boxes: Drag bounding boxes directly in the preview area with immediate saving
 
-- 缩放与平移：支持局部放大、平移查看细节
+- Zoom & pan: Support local zoom and pan to inspect details
 
-- 多选批量编辑：同时选中多个框统一操作
+- Multi‑select batch editing: Select multiple boxes and apply changes simultaneously
 
-- 配置化：自定义颜色、文字大小、快捷键等 UI 设置
+- Configuration: Customize UI settings such as colors, font sizes, and keyboard shortcuts
 
-- 插件扩展：接入更多导出格式或自定义校验逻辑
+- Plugin extensions: Add more export formats or custom validation logic
 
-> _基于 Labelme，Zixiang Huang 2025 年开发_
+> _Based on Labelme, developed by Zixiang Huang, 2025_

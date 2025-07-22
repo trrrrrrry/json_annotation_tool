@@ -114,7 +114,7 @@ The tool will load/save any other keys and values besides the ones specified abo
 ### 2. Using the bundled executable
   1. After building or downloading, open the `dist/` folder
 
-  2. Double‑click `main.exe` (Windows) to launch the tool directly
+  2. Double‑click `json_annotation_tool.exe` (Windows) to launch the tool directly
 
   3. No Python or additional dependencies required
 ---

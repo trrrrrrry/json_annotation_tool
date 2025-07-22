@@ -38,9 +38,9 @@ json_annotation_tool/             # Project root directory
   "imagePath": "I_am_a_picture.png",
   "shapes": [
     {
-      "region_name": "我是大框！",
+      "region_name": "I am a region！",
       "is_region_flag": "true",
-      "label": "我是一个label！",
+      "label": "I am a label！",
       "points": [[100, 200], [400, 500]],
       "other_key": "…"    // other keys
     }

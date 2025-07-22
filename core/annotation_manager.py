@@ -75,7 +75,7 @@ def add_shape_to_file(
     json_path: str,
     is_region_flag: str,
     coords: Tuple[float, float, float, float],
-    template_idx: int = 0,
+    template_idx: Optional[int] = None,
     region_name: Optional[str] = None,
     label: Optional[str] = None
 ) -> None:
@@ -83,15 +83,23 @@ def add_shape_to_file(
     在 JSON 中添加新的 shape，可覆盖 region_name 和 label。
     """
     ann = load_annotation(json_path, default_image_path=None)
-    if template_idx < 0 or template_idx >= len(ann.shapes):
-        raise IndexError(f"Template index out of range: {template_idx}")
-    tpl = ann.shapes[template_idx]
 
-    new_region = region_name if region_name is not None else tpl.region_name
-    new_label  = label        if label        is not None else tpl.label
+    if template_idx is None:
+        new_region = region_name or ''
+        new_label = label or ''
+        other = {}
+    else:
+        if template_idx < 0 or template_idx >= len(ann.shapes):
+            raise IndexError(f"Template index out of range: {template_idx}")
+        tpl = ann.shapes[template_idx]
+
+        new_region = region_name if region_name is not None else tpl.region_name
+        new_label  = label        if label        is not None else tpl.label
+
+        other = tpl.other.copy()
+
     p1 = (coords[0], coords[1])
     p2 = (coords[2], coords[3])
-    other = tpl.other.copy()
 
     new_shape = Shape(
         region_name=new_region,

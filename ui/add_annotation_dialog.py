@@ -41,16 +41,16 @@ class AddAnnotationDialog(QDialog):
         self.y2_input.setPlaceholderText('y2')
         layout.addRow('y2:', self.y2_input)
 
-        # 模板索引 (1-based)
+        # 模板索引 (0 = none; >0 表示复制对应框)
         self.template_spin = QSpinBox()
-        self.template_spin.setMinimum(1)
+        self.template_spin.setMinimum(0)
         max_shapes = 1
         if parent and hasattr(parent, 'preview') and parent.preview.annotations:
             idx = parent.preview.image_list.currentRow()
             if idx >= 0:
                 max_shapes = max(len(parent.preview.annotations[idx].shapes), 1)
         self.template_spin.setMaximum(max_shapes)
-        layout.addRow('Template shape # (1-based):', self.template_spin)
+        layout.addRow('Template shape # (0 = none):', self.template_spin)
 
         # 按钮
         btn_add = QPushButton('Add')
@@ -75,7 +75,8 @@ class AddAnnotationDialog(QDialog):
             QMessageBox.warning(self, 'Input Error', 'Coordinates must be numeric.')
             return
 
-        template_idx = self.template_spin.value() - 1  # 转换为 0-based
+        spin_val = self.template_spin.value()
+        template_idx = None if spin_val == 0 else spin_val - 1
 
         # 对所有预览文件执行添加操作
         for ann in self.parent.preview.annotations:

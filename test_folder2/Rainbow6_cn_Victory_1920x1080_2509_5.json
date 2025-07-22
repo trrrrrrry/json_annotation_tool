@@ -1,32 +1,62 @@
 {
-    "version": "5.2.1",
-    "flags": {},
-    "shapes": [
-        {
-            "is_region_flag": "false",
-            "region_name": "hi",
-            "label": "label",
-            "points": [
-                [
-                    10.0,
-                    20.0
-                ],
-                [
-                    300.0,
-                    400.0
-                ]
-            ],
-            "group_id": null,
-            "description": "",
-            "shape_type": "rectangle",
-            "flags": {},
-            "mask": null
-        }
-    ],
-    "imagePath": "Rainbow6_cn_Victory_1920x1080_2509_5.jpg",
-    "imageData": null,
-    "imageHeight": 1080,
-    "imageWidth": 1920,
-    "metadata": {},
-    "imageID": null
+  "version": "5.2.1",
+  "flags": {},
+  "shapes": [
+    {
+      "region_name": "hi",
+      "is_region_flag": "false",
+      "label": "label",
+      "points": [
+        [
+          10.0,
+          20.0
+        ],
+        [
+          300.0,
+          400.0
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "rectangle",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "region_name": "hi",
+      "is_region_flag": "false",
+      "label": "hihihi",
+      "points": [
+        [
+          10.0,
+          20.0
+        ],
+        [
+          30.0,
+          40.0
+        ]
+      ]
+    },
+    {
+      "region_name": "hihi",
+      "is_region_flag": "true",
+      "label": "hi",
+      "points": [
+        [
+          500.0,
+          600.0
+        ],
+        [
+          700.0,
+          800.0
+        ]
+      ]
+    }
+  ],
+  "imagePath": "Rainbow6_cn_Victory_1920x1080_2509_5.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "metadata": {},
+  "imageID": null
 }

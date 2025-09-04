@@ -1,7 +1,7 @@
 # json_annotation_tool
 A desktop application built with Python and PyQt5 for browsing and editing JSON‑based bounding‑box annotations linked to images. It supports batch operations—adding, deleting, and modifying annotations with a single click—dramatically streamlining the post‑processing workflow for Labelme.
 
-## 📂 Project Structure
+## Project Structure
 
 ```plaintext
 json_annotation_tool/             # Project root directory
